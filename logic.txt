@@ -1,0 +1,42 @@
+Project Hangman
+--------------------------
+
+**Game Logic
+
+--- START THE GAME
+1. Set the "player lives" to a number
+2. Select a random word from the "words-list.txt" file 
+
+--- START THE LOOP (while mistakes < 10)
+3. Show the word with the letters hidden
+4. Player chooses a letter of the alphabet
+5. Check if the letter is in the word
+5b. If YES: add the letter to the word and to a list of already_chosen letters (a letter can be chosen onyl once). ELSE mistakes count +1
+6. Repeat the loop unless mistakes = 10 or word has been found
+
+
+**Game Structure
+
+PLAYER CLASS
+Initialized with a simple name
+It has a method that allows the player to choose a letter from the alphabet. It returns the letter
+
+ALPHABET CLASS
+Initialized with a list of the alphabet letters
+
+WORD CLASS
+Initialized with ?
+It has a method that loads the "words-list.txt" file and chooses a random word from it
+
+GAME CLASS
+A list of the letters already chosen. A count of the mistakes. Tee chosen word (coming from the Word class)?
+It has a method that manages the main loop of the game
+A method that checks if the letter chosen by the player is in the word
+A method that makes letters appear on the screen and adds them to the list of already_chosen
+A method that checks if the game has ended (word found or player out of guesses)
+
+
+**To do later when the game works has intended
+
+At the start of any turn, instead of making a guess the player should also have the option to save the game.
+When the program first loads, add in an option that allows you to open one of your saved games, and allow player to play on.
