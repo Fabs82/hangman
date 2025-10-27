@@ -1,4 +1,4 @@
-# A class that loadss the text files,filters out words (<5 and <12) and pick a random word from it
+# A class that loads the text files, filters out words (< 5 and > 12) and pick a random word from it
 class Dictionary
   def initialize
     @words_list = File.open("words-list.txt", "r") do |file|

@@ -22,10 +22,11 @@ Initialized with a simple name
 It has a method that aks the player to choose a letter from the alphabet. It returns the letter or whatever input was entered
 
 DICTIONARY CLASS
+loads the text files,filters out words (<5 and <12).
+picks a random word from it
 
 WORD CLASS
-It will have a @@Class Variable with the list of words (loaded from the text file)
-It will be initialized with an instance variable @word coming from the pick_word method
+initialized with an instance variable @word coming from the pick_word method
 It has a method that hides the letters of the word
 It has a method that shows the letters of the word guessed correctly (receive feedback from the GAME class)
 
@@ -33,9 +34,8 @@ GAME CLASS
 A list of the letters already chosen. A mistakes counter. An alphabet letters list
 It has a method that manages the main loop of the game (play_game)
 A method that checks if the input from the player is valid (is the input included in alphabet list?)
-A method that checks if the letter chosen by the player is in the word (is the letter included in word?)
-A method that gives feedback to the WORD class to update it if a letter is included
-A method that adds the letters to the list of already_chosen_letters
+Calls a method that gives feedback to the WORD class to update it if a letter is included
+Adds the letters to the list of already_chosen_letters
 A method that checks if the game has ended (word found or player out of guesses)
 
 

@@ -2,11 +2,10 @@
 class Player
   def initialize(name)
     @name = name
-    puts "#{@name} initialized"
   end
 
   def choose_letter
-    puts "Please choose a letter from the alphabet"
+    puts "\nPlease choose a letter:"
     gets.chomp.downcase
   end
 end
