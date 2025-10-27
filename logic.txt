@@ -21,10 +21,11 @@ PLAYER CLASS
 Initialized with a simple name
 It has a method that aks the player to choose a letter from the alphabet. It returns the letter or whatever input was entered
 
+DICTIONARY CLASS
+
 WORD CLASS
 It will have a @@Class Variable with the list of words (loaded from the text file)
 It will be initialized with an instance variable @word coming from the pick_word method
-It has a method that picks a random word from the @@words_array.
 It has a method that hides the letters of the word
 It has a method that shows the letters of the word guessed correctly (receive feedback from the GAME class)
 
