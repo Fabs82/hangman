@@ -6,12 +6,12 @@ require_relative "file_manager"
 # A class that manages the flow of the game
 class Game
   def initialize
-    @player = Player.new("Player One")
     @dictionary = Dictionary.new
+    @filemanager = FileManager.new("savefile")
+    @player = Player.new("Player One")
     @secret_word = SecretWord.new(@dictionary.pick_random_word)
     @used_letters = []
     @mistakes_count = 0
-    @filemanager = FileManager.new("savefile")
   end
 
   def start_game
@@ -62,11 +62,9 @@ class Game
 
   def create_save_data
     # store the data used to create a JSON save file
-    secret_word_data = @secret_word.word
-    hidden_word_data = @secret_word.hidden
     {
-      "secret_word": secret_word_data,
-      "hidden_word": hidden_word_data,
+      "secret_word": @secret_word.word,
+      "hidden_word": @secret_word.hidden,
       "used_letters": @used_letters,
       "mistakes": @mistakes_count
     }

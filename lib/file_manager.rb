@@ -16,9 +16,5 @@ class FileManager
   end
 
   def load_game
-    file_path = "save/#{@filename}.json"
-    parsed_data = File.read(file_path)
-    data = JSON.parse(parsed_data)
-    puts data
   end
 end
