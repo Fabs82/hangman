@@ -1,6 +1,6 @@
 # A class that picks a ranwom word from a loaded list
 class SecretWord
-  attr_reader :word
+  attr_reader :word, :hidden
 
   def initialize(word)
     @word = word.split(//)
@@ -12,8 +12,8 @@ class SecretWord
     (1..@word.size).each do |_i|
       @hidden.append(" _ ")
     end
+    @hidden.join
     # transform the array into a string for visual feedback
-    p @hidden.join
   end
 
   def show_word(letter)
@@ -22,14 +22,19 @@ class SecretWord
       @hidden[index] = letter if letter == @word[index]
     end
     # transform the array into a string for visual feedback
-    p @hidden.join
     @hidden.join
+  end
+
+  def show_hidden
+    @hidden.join
+  end
+
+  def check_letter(letter)
+    @word.include?(letter)
   end
 
   def word_found?
     # amethod that checks if word has been found
-    return unless @word.join == @hidden.join
-
-    true
+    @word.join == @hidden.join
   end
 end
