@@ -5,18 +5,21 @@ require_relative "file_manager"
 
 # A class that manages the flow of the game
 class Game
-  def initialize
+  def initialize(loaded_data = nil)
+    # Set up the components that are always needed
+    @player = Player.new("Player One")
     @dictionary = Dictionary.new
     @filemanager = FileManager.new("savefile")
-    @player = Player.new("Player One")
-    @secret_word = SecretWord.new(@dictionary.pick_random_word)
-    @used_letters = []
-    @mistakes_count = 0
+    if loaded_data
+      load_data(loaded_data)
+    else
+      start_new
+    end
   end
 
   def start_game
     # hide the word
-    @secret_word.hide_word
+    @secret_word.hide_word if @secret_word.hidden.empty?
     # takes the secret word and calls a method that hides it showing only underscores for visual feedback
     while @mistakes_count < 3
       start_turn
@@ -37,7 +40,7 @@ class Game
   def start_turn
     puts "\n--- NEW TURN ---"
     puts "Letter already chosen #{@used_letters}"
-    puts "Secret word: #{@secret_word.show_hidden}"
+    puts "Secret word: #{@secret_word.hidden.join}"
     # TO DO: delete print statement when done
     puts "DEBUG: The secret word is: #{@secret_word.word.join}"
   end
@@ -90,8 +93,19 @@ class Game
       puts "Game not saved"
     end
   end
+
+  def load_data(loaded_data)
+    puts "Loading game..."
+    @secret_word = SecretWord.new(loaded_data["secret_word"].join)
+    @secret_word.hidden = loaded_data["hidden_word"]
+    @used_letters = loaded_data["used_letters"]
+    @mistakes_count = loaded_data["mistakes"]
+  end
+
+  def start_new
+    puts "Starting new game..."
+    @secret_word = SecretWord.new(@dictionary.pick_random_word)
+    @used_letters = []
+    @mistakes_count = 0
+  end
 end
-
-game = Game.new
-
-game.start_game
